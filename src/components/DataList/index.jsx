@@ -8,11 +8,15 @@ export const DataList = (props) => {
         props.isLoading ? (
           <CircularProgress />
         ) : (
-          props.data.map((item) => (
-            <div style={{ textAlign: 'left' }}>
-              {item.id}: {item.title}
-            </div>
-          ))
+          props.data.length > 0 ? (
+            props.data.map((item) => (
+              <div style={{ textAlign: 'left' }}>
+                {item.id}: {item.title}
+              </div>
+            ))
+          ) : (
+            <div>Нет данных</div>
+          )
         )
       }
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useStore } from 'effector-react'; // добавится во время лайв кодинга
 import { Button } from '@material-ui/core';
-import { DataListModal } from './components/modals/DataListModal/DataListModal';
+import { DataListModal } from './components/DataListModal/DataListModal';
 import { setIsFetchDataVisible } from './components/DataListModal/stores/settings'; // добавится во время лайв кодинга
 import { DataList } from './components/DataList';
 import { $DataListModalSettings } from './components/DataListModal/stores/settings';
