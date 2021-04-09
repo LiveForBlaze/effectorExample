@@ -1,30 +1,20 @@
-import React, { useEffect } from 'react';
-import { useStore } from 'effector-react';
+import React from 'react';
 import { CircularProgress } from '@material-ui/core';
-import { fetchDataFx, $DataStore } from './stores/data';
-import { $FetchDataSettings } from '../modals/FetchData/stores/settings';
 
-export const DataList = () => {
-  const $dataStore = useStore($DataStore);
-  const $fetchDataSettings = useStore($FetchDataSettings);
-
-  useEffect(() => {
-    fetchDataFx();
-  }, []);
-
+export const DataList = (props) => {
   return (
-    <>
+    <div className="listContainer">
       {
-        $fetchDataSettings.isLoading ? (
+        props.isLoading ? (
           <CircularProgress />
         ) : (
-          $dataStore && $dataStore.map((item) => (
+          props.data.map((item) => (
             <div style={{ textAlign: 'left' }}>
               {item.id}: {item.title}
             </div>
           ))
         )
       }
-    </>
+    </div>
   )
 }

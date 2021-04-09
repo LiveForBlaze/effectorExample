@@ -34,6 +34,7 @@
   margin: 30px 30%;
   border-radius: 10px;
   border: 2px solid rgb(70,79,178);
+  background: rgba(70,79,178,.06);;
 }
 
 @keyframes App-logo-spin {

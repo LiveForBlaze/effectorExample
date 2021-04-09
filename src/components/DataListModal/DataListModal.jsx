@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useStore } from 'effector-react'; // добавится во время лайв кодинга
 import {
   Button,
   Dialog,
@@ -10,25 +9,20 @@ import {
   DialogActions,
   CircularProgress
 } from '@material-ui/core';
-import { setIsFetchDataVisible, $FetchDataSettings } from './stores/settings'; // добавится во время лайв кодинга
-import { fetchDataFx } from '../../DataList/stores/data'; // добавится во время лайв кодинга
 
-export const FetchData = () => {
+export const DataListModal = (props) => {
   const [value, setValue] = useState('');
-  const $fetchDataSettings = useStore($FetchDataSettings); // добавится во время лайв кодинга
-
-  console.log($fetchDataSettings)
 
   return (
     <Dialog
-      open={$fetchDataSettings.isVisible}  // добавится во время лайв кодинга
-      onClose={() => setIsFetchDataVisible(false)} // добавится во время лайв кодинга
+      open={props.isVisible}
+      onClose={props.onClose}
     >
       <DialogTitle>Укажите кол-во элементов</DialogTitle>
       <DialogContent>
         <DialogContentText style={{ textAlign: "center"}}>
           {
-            $fetchDataSettings.isLoading ? (
+            props.isLoading ? (
               <CircularProgress />
             ) : (
               <TextField
@@ -42,11 +36,11 @@ export const FetchData = () => {
         </DialogContentText>
         <DialogActions>
           <Button
-            onClick={() => fetchDataFx(value)}  // добавится во время лайв кодинга
+            onClick={() => props.onSubmit(value)}
             color="primary"
             variant="contained"
             autoFocus
-            disabled={$fetchDataSettings.isLoading}
+            disabled={props.isLoading}
           >
             ОК
           </Button>
